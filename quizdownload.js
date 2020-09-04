@@ -1,4 +1,5 @@
 qns = document.getElementsByClassName("question-view")
+sn = document.getElementsByClassName("section-wrapper")
 
 function download(filename, text) {
   var element = document.createElement('a');
@@ -299,6 +300,12 @@ img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!importan
 `
 
 str = style;
+
+for(let s of sn){
+	const clonedS = s.cloneNode(true);
+	str += clonedS.innerHTML
+}
+
 for(let q of qns){
   const clonedQ = q.cloneNode(true);
   for(let box of clonedQ.querySelectorAll('input')){
