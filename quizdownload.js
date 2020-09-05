@@ -15,6 +15,40 @@ function download(filename, text) {
 }
 
 style = `
+
+<style>
+/* css for matching type question */
+*{
+  box-sizing: border-box;
+}
+.connector{
+  stroke: #979797;
+  stroke-width: 2;
+}
+.question-container>svg{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.option-container{
+  min-height: 38px;
+  width: auto;
+  max-width: 280px;
+  padding: 2%;
+  min-width: 160px;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+</style>
+
 <style>
 /* css for input boxes */
 form {
@@ -39,7 +73,7 @@ form {
   border: 1px solid #DFDFDF;
   border-radius: 3px;
   font-size: 16px;
-  padding: 20px; }
+}
 .question-container     em.question-blank {
     display: inline;
     border-bottom: 1px solid black;
@@ -320,7 +354,11 @@ for(let q of qns){
   }
   if(q.querySelectorAll('.matching-left').length > 0){
     let container = clonedQ.querySelector('.question-container');
-    container.style = "display:flex;justify-content: space-between;position:relative;"
+	let left = clonedQ.querySelector('.matching-left');
+	let right = clonedQ.querySelector('.matching-right');
+    container.style = "width:62%; display: flex;position: relative;flex-flow: row nowrap;justify-content: space-between;align-items: space-around;margin-top: 20px;"
+	left.style = "z-index: 1;display: flex;flex-flow: column nowrap;justify-content: space-around;"
+	right.style = "z-index: 1;display: flex;flex-flow: column nowrap;justify-content: space-around;"
   }
   str += clonedQ.innerHTML;
 }
