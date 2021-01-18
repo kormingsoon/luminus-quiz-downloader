@@ -25,7 +25,7 @@ style = `
   stroke: #979797;
   stroke-width: 2;
 }
-.question-container>svg{
+.question-container > svg{
   height: 100%;
   width: 100%;
   position: absolute;
@@ -46,6 +46,14 @@ style = `
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.option-incorrect {
+  -webkit-print-color-adjust: exact;
+  background-color: rgba(200, 33, 40, 0.12);
+}
+.option-correct {
+  -webkit-print-color-adjust: exact;
+  background-color: #DFEEDB;
 }
 </style>
 
@@ -350,7 +358,7 @@ for(let q of qns){
     }
   }
   for(let box of clonedQ.querySelectorAll('textarea')){
-    box.innerText = box.value;
+    box.innerHTML = box.value;
   }
   if(q.querySelectorAll('.matching-left').length > 0){
     let container = clonedQ.querySelector('.question-container');
